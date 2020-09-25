@@ -1,6 +1,6 @@
 package com.capgemini;
 
-//UC1
+//UC2
 public class SnakeLadder {
 	//Constants
 	public static final int NO_OF_PLAYERS = 1;
@@ -8,5 +8,8 @@ public class SnakeLadder {
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snake Ladder Game!!!");
 		System.out.println("Player is at the starting position");
+		//Computation
+		int diceVal = ((int)Math.floor(Math.random() * 10) % 6) + 1;
+		System.out.println("Player rolled : " + diceVal);
 	}
 }
