@@ -1,6 +1,5 @@
 package com.capgemini;
 
-//UC7
 public class SnakeLadder {
 	//Constants
 	public static final int NO_OF_PLAYERS = 1;
