@@ -1,6 +1,6 @@
 package com.capgemini;
 
-//UC5
+//UC6
 public class SnakeLadder {
 	//Constants
 	public static final int NO_OF_PLAYERS = 1;
@@ -11,6 +11,7 @@ public class SnakeLadder {
 	public static void main(String[] args) {
 		//Variables
 		int currPosition = INITIAL_POSITION;
+		int moves = 0;
 		System.out.println("Welcome to Snake Ladder Game!!!");
 		System.out.println("Player is at the starting position");
 		//Computation
@@ -33,8 +34,9 @@ public class SnakeLadder {
 					currPosition = INITIAL_POSITION;
 				}
 			}
+			moves += 1;
 			System.out.println("Player is at position : " + currPosition);
 		}
-		System.out.println("Player reaches exact winning position");
+		System.out.println("Player reaches exact winning position in : " + moves + " moves");
 	}
 }
