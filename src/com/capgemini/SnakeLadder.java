@@ -1,6 +1,6 @@
 package com.capgemini;
 
-//UC6
+//UC7
 public class SnakeLadder {
 	//Constants
 	public static final int NO_OF_PLAYERS = 1;
@@ -10,33 +10,59 @@ public class SnakeLadder {
 	public static final int SNAKE = 2;
 	public static void main(String[] args) {
 		//Variables
-		int currPosition = INITIAL_POSITION;
-		int moves = 0;
+		int player1Pos = INITIAL_POSITION;
+		int player2Pos = INITIAL_POSITION;
+		int player1 = 1;
 		System.out.println("Welcome to Snake Ladder Game!!!");
-		System.out.println("Player is at the starting position");
+		System.out.println("Both players are at the starting position");
 		//Computation
-		while(currPosition != 100) {
-			int diceVal = ((int)Math.floor(Math.random() * 10) % 6) + 1;
-			System.out.println("Player rolled : " + diceVal);
-			int actionTaken = (int)Math.floor(Math.random() * 10) % 3;
-			if(actionTaken == NO_PLAY) {
-				System.out.println("No action taken");
-			}
-			else if(actionTaken == LADDER) {
-				currPosition += diceVal;
-				if(currPosition > 100) {
-					currPosition -= diceVal;
+		while(player1Pos != 100 && player2Pos != 100) {
+			if(player1 == 1) {
+				int diceVal = ((int)Math.floor(Math.random() * 10) % 6) + 1;
+				int actionTaken = (int)Math.floor(Math.random() * 10) % 3;
+				if(actionTaken == NO_PLAY) {
+					player1 = 0;
+				}
+				else if(actionTaken == LADDER) {
+					player1Pos += diceVal;
+					if(player1Pos > 100) {
+						player1Pos -= diceVal;
+					}
+				}
+				else {
+					player1 = 0;
+					player1Pos -= diceVal;
+					if(player1Pos < INITIAL_POSITION) {
+						player1Pos = INITIAL_POSITION;
+					}
 				}
 			}
 			else {
-				currPosition -= diceVal;
-				if(currPosition < INITIAL_POSITION) {
-					currPosition = INITIAL_POSITION;
+				int diceVal = ((int)Math.floor(Math.random() * 10) % 6) + 1;
+				int actionTaken = (int)Math.floor(Math.random() * 10) % 3;
+				if(actionTaken == NO_PLAY) {
+					player1 = 1;
+				}
+				else if(actionTaken == LADDER) {
+					player2Pos += diceVal;
+					if(player2Pos > 100) {
+						player2Pos -= diceVal;
+					}
+				}
+				else {
+					player1 = 1;
+					player2Pos -= diceVal;
+					if(player2Pos < INITIAL_POSITION) {
+						player2Pos = INITIAL_POSITION;
+					}
 				}
 			}
-			moves += 1;
-			System.out.println("Player is at position : " + currPosition);
 		}
-		System.out.println("Player reaches exact winning position in : " + moves + " moves");
+		if(player1Pos == 100) {
+			System.out.println("Player 1 won the game");
+		}
+		else {
+			System.out.println("Player 2 won the game");
+		}
 	}
 }
